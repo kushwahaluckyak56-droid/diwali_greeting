@@ -1,0 +1,1208 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gojo × Sukuna | Diwali Universe</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@400;500;700;800&display=swap');
+
+:root {
+  --gold: #ffd36a;
+  --blue: #49d8ff;
+  --red: #ff3158;
+  --bg: #070713;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: white;
+  font-family: Poppins, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+#effects {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 65px;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #080714dd;
+  border-bottom: 1px solid #ffffff18;
+  backdrop-filter: blur(15px);
+  z-index: 50;
+}
+
+.logo {
+  font: 900 15px Orbitron, sans-serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-btn {
+  border: 1px solid #ffffff25;
+  border-radius: 20px;
+  padding: 8px 12px;
+  background: #ffffff08;
+  color: white;
+  cursor: pointer;
+  transition: .25s;
+  font-size: 12px;
+}
+
+.nav-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.sound {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 60;
+  padding: 12px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  color: var(--gold);
+  background: #100d20;
+  cursor: pointer;
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 110px 7% 85px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.page.active {
+  display: flex;
+  animation: pageAppear .55s ease both;
+}
+
+@keyframes pageAppear {
+  from {
+    opacity: 0;
+    filter: brightness(.65);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 950px;
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2 {
+  font-family: Orbitron, sans-serif;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(38px, 8vw, 88px);
+}
+
+h2 {
+  font-size: clamp(28px, 5vw, 58px);
+  margin-bottom: 22px;
+}
+
+p {
+  max-width: 700px;
+  margin: 16px auto;
+  line-height: 1.9;
+  color: #d7d7e9;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 24px;
+}
+
+.gold {
+  color: var(--gold);
+  text-shadow: 0 0 18px #ffb82e66;
+}
+
+.blue {
+  color: var(--blue);
+  text-shadow: 0 0 20px #168cff88;
+}
+
+.red {
+  color: var(--red);
+  text-shadow: 0 0 20px #ff174f88;
+}
+
+.btn {
+  display: inline-block;
+  margin: 9px 5px;
+  padding: 14px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: #ffffff08;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  cursor: pointer;
+  transition: .25s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: #090713;
+  box-shadow: 0 0 24px #ffca4a44;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+.blue-btn {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.red-btn {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.card {
+  max-width: 720px;
+  margin: 25px auto;
+  padding: 28px 20px;
+  border: 1px solid #ffffff20;
+  border-radius: 24px;
+  background: #ffffff09;
+  box-shadow: 0 20px 65px #0004;
+}
+
+.symbol {
+  font-size: clamp(75px, 13vw, 125px);
+  margin: 20px 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Individual page backgrounds */
+
+#home {
+  background:
+    radial-gradient(ellipse at 20% 50%, #104c8c55, transparent 45%),
+    radial-gradient(ellipse at 80% 50%, #a0173855, transparent 45%),
+    linear-gradient(145deg, #050510, #171027, #050510);
+}
+
+#gojo {
+  background: radial-gradient(circle, #103f7966, transparent 55%), #050b1c;
+}
+
+#sukuna {
+  background: radial-gradient(circle, #85132f66, transparent 55%), #15040b;
+}
+
+#outfits {
+  background: radial-gradient(circle, #b17a2b33, transparent 60%), #100b1c;
+}
+
+#gojoDomain {
+  background: radial-gradient(circle, #0e76c544, transparent 50%), #030916;
+}
+
+#sukunaDomain {
+  background: radial-gradient(circle, #b4113d44, transparent 50%), #10020a;
+}
+
+#diyas {
+  background: radial-gradient(ellipse at bottom, #b65d1744, transparent 60%), #10091a;
+}
+
+#fireworksPage {
+  background: radial-gradient(circle at top, #28245a55, transparent 55%), #050510;
+}
+
+#battle {
+  background: linear-gradient(110deg, #06152d, #090716 50%, #300713);
+}
+
+#wishes {
+  background: radial-gradient(circle, #87511f44, transparent 60%), #090611;
+}
+
+/* Domain circles */
+
+.domain-ring {
+  width: min(62vw, 300px);
+  aspect-ratio: 1;
+  margin: 25px auto;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 90px;
+  box-shadow: 0 0 30px #008cff77, inset 0 0 45px #008cff44;
+  animation: ringSpin 12s linear infinite;
+}
+
+.red-ring {
+  border-color: var(--red);
+  box-shadow: 0 0 30px #ff174f77, inset 0 0 45px #ff174f44;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Diyas */
+
+.diya-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.diya {
+  width: 72px;
+  height: 85px;
+  position: relative;
+  display: grid;
+  place-items: end center;
+}
+
+.diya-bowl {
+  position: relative;
+  z-index: 2;
+  width: 65px;
+  height: 32px;
+  border-radius: 8px 8px 35px 35px;
+  background: linear-gradient(#ffcc67, #b94b11);
+  box-shadow: 0 0 15px #ff820044;
+}
+
+.flame {
+  position: absolute;
+  bottom: 27px;
+  left: 27px;
+  width: 17px;
+  height: 30px;
+  background: linear-gradient(to top, #ff6500, #ffe66a, white);
+  border-radius: 80% 15% 65% 50%;
+  transform: rotate(8deg) scale(.25);
+  opacity: .1;
+  transition: .5s;
+  filter: blur(1px);
+}
+
+.diya.lit .flame {
+  transform: rotate(8deg) scale(1);
+  opacity: 1;
+  box-shadow: 0 0 20px #ff9e00;
+  animation: flameMove .35s infinite alternate;
+}
+
+.diya.lit .diya-bowl {
+  box-shadow: 0 0 30px #ff8a00;
+}
+
+@keyframes flameMove {
+  from { filter: brightness(.85) blur(.5px); }
+  to { filter: brightness(1.4) blur(1px); }
+}
+
+.status {
+  min-height: 30px;
+  color: var(--gold);
+  margin-top: 16px;
+}
+
+.versus {
+  margin: 25px 0;
+  font: 900 clamp(45px, 10vw, 90px) Orbitron, sans-serif;
+  background: linear-gradient(90deg, var(--blue), white, var(--red));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.wish-message {
+  display: none;
+  margin: 25px auto;
+  padding: 22px;
+  border: 1px solid #ffd36a66;
+  border-radius: 20px;
+  background: #ffd36a0b;
+  color: var(--gold);
+  line-height: 1.9;
+  animation: pageAppear .5s ease both;
+}
+
+.wish-message.show {
+  display: block;
+}
+
+.page-footer {
+  margin-top: 35px;
+  color: #77778c;
+  font-size: 11px;
+}
+
+#toast {
+  position: fixed;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  padding: 12px 18px;
+  border-radius: 24px;
+  border: 1px solid #ffd36a77;
+  background: #110e22;
+  color: var(--gold);
+  z-index: 100;
+  text-align: center;
+  display: none;
+}
+
+@media (max-width: 650px) {
+  nav {
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 10px;
+  }
+
+  .nav-btn {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .page {
+    padding: 105px 5% 80px;
+  }
+
+  .card {
+    padding: 23px 14px;
+  }
+
+  .diya-row {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="effects"></canvas>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<nav>
+  <div class="logo">ANIME DIWALI ✨</div>
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="goTo('home')">🏠 Home</button>
+    <button class="nav-btn" onclick="goBack()">← Back</button>
+    <button class="nav-btn" onclick="toggleSound()" id="soundNav">🔇 Sound</button>
+  </div>
+</nav>
+
+<main id="app">
+
+<!-- PAGE 1 -->
+<section class="page active" id="home">
+  <div class="content">
+    <div class="eyebrow">A SPECIAL ANIME CELEBRATION</div>
+    <div class="symbol">🪔</div>
+    <h1 class="gold">HAPPY<br>DIWALI</h1>
+    <p>
+      Welcome to a magical night where anime powers meet
+      the Festival of Lights!
+    </p>
+    <p class="blue">GOJO SATORU × RYOMEN SUKUNA</p>
+
+    <button class="btn" onclick="goTo('gojo')">ENTER THE UNIVERSE ✨</button>
+    <button class="btn" onclick="goTo('diyas')">LIGHT THE DIYAS 🪔</button>
+
+    <div class="page-footer">01 / 10 · THE BEGINNING</div>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="gojo">
+  <div class="content">
+    <div class="eyebrow">THE STRONGEST SORCERER</div>
+    <h2 class="blue">GOJO SATORU</h2>
+
+    <div class="card">
+      <div class="symbol">🔵</div>
+      <h2>INFINITY FESTIVAL</h2>
+      <p>
+        A universe of blue energy, endless possibilities
+        and a cool festive atmosphere.
+      </p>
+      <p>✨ Festive Blue Kurta · 🤍 White Pajama</p>
+      <button class="btn blue-btn" onclick="goTo('outfits')">VIEW FESTIVE LOOK</button>
+      <button class="btn blue-btn" onclick="goTo('gojoDomain')">DOMAIN EXPANSION →</button>
+    </div>
+
+    <button class="btn" onclick="goTo('home')">🏠 HOME</button>
+    <div class="page-footer">02 / 10 · THE INFINITY SORCERER</div>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="sukuna">
+  <div class="content">
+    <div class="eyebrow">THE KING OF CURSES</div>
+    <h2 class="red">RYOMEN SUKUNA</h2>
+
+    <div class="card">
+      <div class="symbol">🔴</div>
+      <h2>ROYAL CURSED ENERGY</h2>
+      <p>
+        A powerful crimson aura and a royal Diwali look
+        for the King of Curses.
+      </p>
+      <p>🔥 Royal Red Kurta · 🖤 Traditional Pajama</p>
+      <button class="btn red-btn" onclick="goTo('outfits')">VIEW FESTIVE LOOK</button>
+      <button class="btn red-btn" onclick="goTo('sukunaDomain')">DOMAIN EXPANSION →</button>
+    </div>
+
+    <button class="btn" onclick="goTo('home')">🏠 HOME</button>
+    <div class="page-footer">03 / 10 · THE KING OF CURSES</div>
+  </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="outfits">
+  <div class="content">
+    <div class="eyebrow">TRADITION MEETS ANIME</div>
+    <h2 class="gold">FESTIVE MODE: ON</h2>
+
+    <div class="card">
+      <div class="symbol">👘</div>
+      <h2 class="blue">GOJO'S FESTIVE STYLE</h2>
+      <p>Blue kurta, white pajama and an Infinity-inspired festive theme.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🎎</div>
+      <h2 class="red">SUKUNA'S ROYAL STYLE</h2>
+      <p>Royal red, dark details and a powerful festive atmosphere.</p>
+    </div>
+
+    <button class="btn blue-btn" onclick="goTo('gojo')">GOJO PAGE</button>
+    <button class="btn red-btn" onclick="goTo('sukuna')">SUKUNA PAGE</button>
+    <button class="btn" onclick="goTo('diyas')">NEXT: DIWALI LIGHTS →</button>
+
+    <div class="page-footer">04 / 10 · FESTIVE COLLECTION</div>
+  </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="gojoDomain">
+  <div class="content">
+    <div class="eyebrow">DOMAIN EXPANSION</div>
+    <h2 class="blue">UNLIMITED VOID</h2>
+    <div class="domain-ring">∞</div>
+    <p>Enter the blue universe of infinite possibilities.</p>
+
+    <button class="btn blue-btn" onclick="activateDomain('blue')">🔵 ACTIVATE DOMAIN</button>
+    <button class="btn" onclick="goTo('sukunaDomain')">NEXT DOMAIN →</button>
+    <button class="btn" onclick="goTo('home')">🏠 HOME</button>
+
+    <div id="blueStatus" class="status"></div>
+    <div class="page-footer">05 / 10 · UNLIMITED VOID</div>
+  </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="sukunaDomain">
+  <div class="content">
+    <div class="eyebrow">DOMAIN EXPANSION</div>
+    <h2 class="red">MALEVOLENT SHRINE</h2>
+    <div class="domain-ring red-ring">⛩</div>
+    <p>Crimson energy illuminates the night.</p>
+
+    <button class="btn red-btn" onclick="activateDomain('red')">🔴 ACTIVATE DOMAIN</button>
+    <button class="btn" onclick="goTo('diyas')">NEXT: DIYAS →</button>
+    <button class="btn" onclick="goTo('home')">🏠 HOME</button>
+
+    <div id="redStatus" class="status"></div>
+    <div class="page-footer">06 / 10 · MALEVOLENT SHRINE</div>
+  </div>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page" id="diyas">
+  <div class="content">
+    <div class="eyebrow">THE FESTIVAL OF LIGHTS</div>
+    <h2 class="gold">LIGHT UP THE NIGHT</h2>
+    <p>Press the button to light every diya on this page!</p>
+
+    <div class="diya-row" id="diyaRow">
+      <div class="diya"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya"><div class="flame"></div><div class="diya-bowl"></div></div>
+      <div class="diya"><div class="flame"></div><div class="diya-bowl"></div></div>
+    </div>
+
+    <button class="btn" onclick="lightDiyas()">🪔 LIGHT UP DIYAS</button>
+    <button class="btn" onclick="extinguishDiyas()">🌙 TURN OFF DIYAS</button>
+    <button class="btn" onclick="goTo('fireworksPage')">NEXT: FIREWORKS →</button>
+
+    <div id="diyaStatus" class="status">Your diyas are waiting to be lit!</div>
+    <div class="page-footer">07 / 10 · FESTIVAL OF LIGHTS</div>
+  </div>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page" id="fireworksPage">
+  <div class="content">
+    <div class="eyebrow">A SKY FULL OF MAGIC</div>
+    <h2 class="gold">FIREWORKS FESTIVAL</h2>
+
+    <div class="symbol">🎆</div>
+    <p>
+      Ready for a colourful Diwali sky?
+      Launch your own animated fireworks display!
+    </p>
+
+    <button class="btn" onclick="launchFireworks()">🎆 LAUNCH FIRECRACKERS</button>
+    <button class="btn" onclick="stopFireworks()">🛑 STOP FIREWORKS</button>
+    <button class="btn" onclick="goTo('battle')">NEXT: ENERGY CLASH →</button>
+
+    <div id="fireworkStatus" class="status">Fireworks are ready!</div>
+    <div class="page-footer">08 / 10 · FIREWORKS SHOW</div>
+  </div>
+</section>
+
+<!-- PAGE 9 -->
+<section class="page" id="battle">
+  <div class="content">
+    <div class="eyebrow">THE ULTIMATE ANIME SHOWDOWN</div>
+    <h2 class="blue">GOJO</h2>
+    <div class="versus">VS</div>
+    <h2 class="red">SUKUNA</h2>
+
+    <p>Blue Infinity meets red cursed energy in a spectacular clash!</p>
+
+    <button class="btn" onclick="energyClash()">⚡ START ENERGY CLASH</button>
+    <button class="btn" onclick="goTo('wishes')">NEXT: DIWALI WISHES →</button>
+    <button class="btn" onclick="goTo('home')">🏠 HOME</button>
+
+    <div id="battleStatus" class="status"></div>
+    <div class="page-footer">09 / 10 · INFINITY VS CURSED ENERGY</div>
+  </div>
+</section>
+
+<!-- PAGE 10 -->
+<section class="page" id="wishes">
+  <div class="content">
+    <div class="eyebrow">A SPECIAL MESSAGE FOR YOU</div>
+    <h2 class="gold">HAPPY DIWALI!</h2>
+
+    <div class="card">
+      <div class="symbol">🪔✨</div>
+      <p>
+        May your life shine brighter than the stars,
+        your dreams reach new heights,
+        and your days be filled with happiness,
+        success, peace and positive energy.
+      </p>
+
+      <button class="btn" onclick="revealWish()">💌 REVEAL YOUR WISH</button>
+
+      <div id="wishMessage" class="wish-message">
+        ✨ May every new beginning bring happiness,
+        every challenge make you stronger,
+        and every Diwali light up your dreams! ✨
+      </div>
+    </div>
+
+    <button class="btn" onclick="launchFireworks()">🎇 GRAND FINALE</button>
+    <button class="btn" onclick="shareWebsite()">↗ SHARE WEBSITE</button>
+    <button class="btn" onclick="goTo('home')">🏠 BACK TO HOME</button>
+
+    <div class="page-footer">10 / 10 · KEEP SHINING!</div>
+  </div>
+</section>
+
+</main>
+
+<button class="sound" id="soundBtn" onclick="toggleSound()">🔇 SOUND OFF</button>
+
+<script>
+/* =========================================
+   1. PAGE NAVIGATION
+========================================= */
+
+const pageIds = [
+  "home",
+  "gojo",
+  "sukuna",
+  "outfits",
+  "gojoDomain",
+  "sukunaDomain",
+  "diyas",
+  "fireworksPage",
+  "battle",
+  "wishes"
+];
+
+let currentPage = "home";
+let pageHistory = [];
+
+function goTo(id) {
+  const target = document.getElementById(id);
+
+  if (!target || !pageIds.includes(id)) {
+    showToast("This page could not be found.");
+    return;
+  }
+
+  if (id === currentPage) {
+    showToast("You are already on this page!");
+    return;
+  }
+
+  const previous = document.getElementById(currentPage);
+
+  if (previous) {
+    previous.classList.remove("active");
+  }
+
+  pageHistory.push(currentPage);
+  currentPage = id;
+
+  target.classList.remove("active");
+
+  // Force the browser to restart the page animation.
+  void target.offsetWidth;
+
+  target.classList.add("active");
+
+  // Start each page at the top, without scrolling between pages.
+  window.scrollTo({ top: 0, behavior: "instant" });
+
+  if (id === "fireworksPage") {
+    showToast("🎆 Welcome to the Fireworks Festival!");
+  }
+}
+
+function goBack() {
+  while (pageHistory.length > 0) {
+    const previousId = pageHistory.pop();
+
+    if (previousId !== currentPage && document.getElementById(previousId)) {
+      const current = document.getElementById(currentPage);
+      if (current) current.classList.remove("active");
+
+      currentPage = previousId;
+
+      const previous = document.getElementById(currentPage);
+      previous.classList.remove("active");
+      void previous.offsetWidth;
+      previous.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
+  }
+
+  if (currentPage !== "home") {
+    goTo("home");
+  } else {
+    showToast("You are already on the Home page!");
+  }
+}
+
+/* =========================================
+   2. TOAST MESSAGE
+========================================= */
+
+let toastTimer;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.display = "block";
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.style.display = "none";
+  }, 2600);
+}
+
+/* =========================================
+   3. WORKING FIREWORKS CANVAS
+========================================= */
+
+const canvas = document.getElementById("effects");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let fireworksRunning = false;
+let fireworkInterval = null;
+let animationFrame = null;
+let lastAmbient = 0;
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = Math.floor(window.innerWidth * dpr);
+  canvas.height = Math.floor(window.innerHeight * dpr);
+
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function makeParticle(x, y, color, power = 1) {
+  const angle = Math.random() * Math.PI * 2;
+  const speed = (Math.random() * 4 + 1) * power;
+
+  return {
+    x,
+    y,
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
+    life: 1,
+    decay: Math.random() * 0.013 + 0.008,
+    size: Math.random() * 2.5 + 1,
+    color
+  };
+}
+
+function burst(x, y, color, count = 70, power = 1) {
+  const maximumParticles = 1600;
+
+  if (particles.length > maximumParticles) {
+    particles.splice(0, particles.length - maximumParticles);
+  }
+
+  for (let i = 0; i < count; i++) {
+    particles.push(makeParticle(x, y, color, power));
+  }
+}
+
+function animateEffects(timestamp) {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  // Ambient golden sparkles.
+  if (timestamp - lastAmbient > 180 && particles.length < 350) {
+    lastAmbient = timestamp;
+
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: window.innerHeight + 3,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -Math.random() * 0.7 - 0.2,
+      life: 1,
+      decay: 0.004,
+      size: Math.random() * 1.7 + 0.5,
+      color: "#ffd36a"
+    });
+  }
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.025;
+    p.life -= p.decay;
+
+    if (p.life <= 0) {
+      particles.splice(i, 1);
+      continue;
+    }
+
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.fillStyle = p.color;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
+
+  animationFrame = requestAnimationFrame(animateEffects);
+}
+
+animationFrame = requestAnimationFrame(animateEffects);
+
+function launchFireworks() {
+  stopFireworks(false);
+
+  fireworksRunning = true;
+
+  const colors = [
+    "#ffd36a",
+    "#49d8ff",
+    "#ff3158",
+    "#ffffff",
+    "#c47aff",
+    "#75ff9b"
+  ];
+
+  function launchOne() {
+    if (!fireworksRunning) return;
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight * 0.58 + 40;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    burst(x, y, color, 85, 1.3);
+    playChime();
+  }
+
+  // Immediate fireworks, then repeated launches.
+  launchOne();
+  launchOne();
+
+  fireworkInterval = setInterval(launchOne, 450);
+
+  const status = document.getElementById("fireworkStatus");
+  if (status) status.textContent = "🎆 Fireworks are LIVE!";
+
+  showToast("🎆 FIREWORKS LAUNCHED!");
+}
+
+function stopFireworks(showMessage = true) {
+  fireworksRunning = false;
+
+  if (fireworkInterval) {
+    clearInterval(fireworkInterval);
+    fireworkInterval = null;
+  }
+
+  if (showMessage) {
+    const status = document.getElementById("fireworkStatus");
+    if (status) status.textContent = "Fireworks stopped. Launch again anytime!";
+
+    showToast("✨ Fireworks stopped!");
+  }
+}
+
+/* =========================================
+   4. DIYAS
+========================================= */
+
+function lightDiyas() {
+  const diyas = document.querySelectorAll("#diyaRow .diya");
+
+  diyas.forEach((diya, index) => {
+    setTimeout(() => {
+      diya.classList.add("lit");
+
+      const rect = diya.getBoundingClientRect();
+
+      burst(
+        rect.left + rect.width / 2,
+        rect.top + 35,
+        "#ffb72e",
+        12,
+        0.5
+      );
+
+      playChime();
+    }, index * 220);
+  });
+
+  document.getElementById("diyaStatus").textContent =
+    "🪔 All diyas are lighting up with festive glow!";
+
+  showToast("🪔 DIYAS LIGHTING UP!");
+}
+
+function extinguishDiyas() {
+  document.querySelectorAll("#diyaRow .diya").forEach(diya => {
+    diya.classList.remove("lit");
+  });
+
+  document.getElementById("diyaStatus").textContent =
+    "🌙 Diyas turned off. Light them again anytime!";
+
+  showToast("🌙 Diyas turned off.");
+}
+
+/* =========================================
+   5. DOMAIN EXPANSION
+========================================= */
+
+function activateDomain(type) {
+  const color = type === "blue" ? "#49d8ff" : "#ff3158";
+  const x = window.innerWidth / 2;
+  const y = window.innerHeight / 2;
+
+  burst(x, y, color, 180, 1.7);
+
+  document.body.animate(
+    [
+      { filter: "brightness(1)" },
+      { filter: "brightness(1.7)" },
+      { filter: "brightness(1)" }
+    ],
+    { duration: 650, easing: "ease-out" }
+  );
+
+  if (type === "blue") {
+    document.getElementById("blueStatus").textContent =
+      "🔵 UNLIMITED VOID ACTIVATED!";
+    showToast("🔵 DOMAIN EXPANSION: UNLIMITED VOID!");
+  } else {
+    document.getElementById("redStatus").textContent =
+      "🔴 MALEVOLENT SHRINE ACTIVATED!";
+    showToast("🔴 DOMAIN EXPANSION: MALEVOLENT SHRINE!");
+  }
+
+  playChime();
+}
+
+/* =========================================
+   6. GOJO VS SUKUNA ENERGY CLASH
+========================================= */
+
+function energyClash() {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  burst(centerX - 85, centerY, "#49d8ff", 100, 1.4);
+
+  setTimeout(() => {
+    burst(centerX + 85, centerY, "#ff3158", 100, 1.4);
+  }, 200);
+
+  setTimeout(() => {
+    burst(centerX, centerY, "#ffffff", 160, 2);
+    playChime();
+  }, 420);
+
+  document.getElementById("battleStatus").textContent =
+    "⚡ BLUE INFINITY × RED CURSED ENERGY!";
+
+  showToast("⚡ ENERGY CLASH ACTIVATED!");
+}
+
+/* =========================================
+   7. DIWALI WISH
+========================================= */
+
+function revealWish() {
+  const message = document.getElementById("wishMessage");
+
+  message.classList.add("show");
+
+  burst(
+    window.innerWidth / 2,
+    window.innerHeight / 2,
+    "#ffd36a",
+    75,
+    1
+  );
+
+  playChime();
+  showToast("💌 Your special Diwali wish is here!");
+}
+
+/* =========================================
+   8. SOUND CONTROLS
+========================================= */
+
+let soundEnabled = false;
+let audioContext = null;
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+
+  const label = soundEnabled ? "🔊 Sound ON" : "🔇 Sound OFF";
+
+  document.getElementById("soundBtn").textContent = label;
+  document.getElementById("soundNav").textContent = label;
+
+  if (soundEnabled) {
+    try {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioClass) {
+        soundEnabled = false;
+        document.getElementById("soundBtn").textContent = "🔇 Sound OFF";
+        document.getElementById("soundNav").textContent = "🔇 Sound OFF";
+        showToast("Audio is not supported in this browser.");
+        return;
+      }
+
+      if (!audioContext) audioContext = new AudioClass();
+
+      if (audioContext.state === "suspended") {
+        audioContext.resume();
+      }
+
+      playChime();
+      showToast("🔊 Sound effects enabled!");
+    } catch (error) {
+      showToast("Could not start audio on this device.");
+    }
+  } else {
+    showToast("🔇 Sound effects disabled.");
+  }
+}
+
+function playChime() {
+  if (!soundEnabled || !audioContext) return;
+
+  const notes = [523.25, 659.25, 783.99];
+  const start = audioContext.currentTime;
+
+  notes.forEach((frequency, index) => {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const noteStart = start + index * 0.09;
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = frequency;
+
+    gain.gain.setValueAtTime(0.0001, noteStart);
+    gain.gain.exponentialRampToValueAtTime(0.07, noteStart + 0.025);
+    gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.3);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start(noteStart);
+    oscillator.stop(noteStart + 0.32);
+  });
+}
+
+/* =========================================
+   9. SHARE
+========================================= */
+
+async function shareWebsite() {
+  const data = {
+    title: "Gojo × Sukuna Happy Diwali",
+    text: "Check out this interactive anime-inspired Diwali website!",
+    url: window.location.href
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(data);
+      return;
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast("Website address copied!");
+      return;
+    }
+
+    showToast("To share with others, publish the HTML online first.");
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      showToast("Sharing is not available in this browser.");
+    }
+  }
+}
+
+/* =========================================
+   10. KEYBOARD SUPPORT
+========================================= */
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    goTo("home");
+  }
+});
+
+/* Initial welcome */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    showToast("🪔 Welcome to the Anime Diwali Universe!");
+  }, 700);
+});
+</script>
+
+</body>
+</html>
+```
